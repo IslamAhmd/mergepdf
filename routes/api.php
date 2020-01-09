@@ -21,12 +21,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('login', 'UserController@authenticate');
 
+Route::post('/post', 'PostController@store');
+Route::get('/merge', 'PostController@merge');
+
 
 Route::group(['middleware' => ['jwt.verify']], function() {
         
-		
-	Route::post('/post', 'PostController@store')->name('post.store');
-	Route::get('/merge', 'PostController@merge')->name('post.merge');
-	
 
 });
